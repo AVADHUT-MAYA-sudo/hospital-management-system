@@ -100,10 +100,13 @@ async function verifyOTP(){
             window.location.href =
                 "clinicadmin.html";
         }
-        else{
+        else if(data.role === "clinicX"){
             window.location.href =
                 "clinicX.html";
         }
+        else{}
+        window.location.href =
+                "doctor.html";
     }
     else{
         alert("Invalid OTP");
