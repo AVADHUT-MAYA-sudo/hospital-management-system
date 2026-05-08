@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="Body-superadmin">
+
+<header class="superadmin-header">
+    <h1>Super Admin</h1>
+    <button class="logout" id="logoutBtn">
+        <span class="arrow">
+            <img src="images/arrow.png" alt="arrow">
+            <h2>Logout</h2>
+        </span>
+    </button>
+</header>
+<b class="b"></b>
+<div class="superadmin-body">
+<div class="left-body">
+    <button class="All-Requests" id="allRequestBtn">
+        <h1>ALL Request</h1>
+    </button>
+    <button class="existing-clinic" id="existingClinicBtn">
+        <h1>Existing Clinic</h1>
+    </button>
+    <br>
+    <b class="b"></b>
+</div>
+<div class="right-body">
+    <div id="requestSection">
+    <div class="righttop">
+        <div class="search-section">
+        <img src="images/searchtool.png" alt="searchtool">
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search by person name, city, clinic name, area"
+        >
+        </div>
+        <div class="select-box">
+        <select id="topFilter" class="topFilter">
+            <option value="Pending">Pending </option>
+            <option value="Hold">Hold </option>
+            <option value="Declined">Declined </option>
+        </select>
+        <span class="arrow">▼</span>
+        </div>
+    </div>
+
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Clinic name</th>
+                    <th>City</th>
+                    <th>Area</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody" class="tablebody"></tbody>
+        </table>
+    </div>
+    </div>
+    <div id="clinicSection" style="display:none;">
+        <h1>Existing Clinics</h1>
+        <div class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Clinic Name</th>
+                        <th>City</th>
+                        <th>Area</th>
+                        <th>Subscription Status</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="clinicTableBody" class="clinicTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div id="patientModal" class="modal">
+    <div class="modal-content large-modal">
+
+        <span class="close" onclick="closeModal()">×</span>
+
+        <div id="patientDetails"></div>
+
+        <h2 class="subHeading">Subscription Details</h2>
+
+        <table class="subTable">
+            <thead>
+                <tr>
+                    <th>Plans</th>
+                    <th>Number of doctors</th>
+                    <th>Amount</th>
+                    <th>Date And Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="subscriptionBody"></tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

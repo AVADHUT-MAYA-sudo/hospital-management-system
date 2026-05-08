@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <h2>Select a payment option</h2>
+
+    <div class="payment-options">
+
+        <!-- OPTION 1 -->
+        <div class="pay-box active" onclick="selectPayment(this,'CARD')">
+            <h3>Credit Card</h3>
+
+            <div id="cardSection" style="display:block;">
+                <input type="text" id="cardNumber" placeholder="Enter card number">
+                <input type="text" id="expiry" placeholder="MM/YY">
+                <input type="password" id="cvv" placeholder="CVV">
+
+                <button onclick="payByCard(event)">
+                    Pay with Card
+                </button>
+            </div>
+        </div>
+
+        <!-- OPTION 2 -->
+        <div class="pay-box" onclick="selectPayment(this)">
+            <h3>Debit Card / Internet Banking</h3>
+        </div>
+
+        <!-- OPTION 3 -->
+        <div class="pay-box" onclick="selectPayment(this,'UPI')">
+            <h3>UPI</h3>
+
+            <!-- QR for desktop -->
+            <div id="qrSection" style="display:none;">
+                <p>Scan to pay</p>
+                <canvas id="qrCanvas"></canvas>
+                <h2 id="qrAmount"></h2>
+                <!-- <button onclick="paymentSuccess()">
+                    Payment Completed
+                </button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <button class="next-btn" onclick="completePayment()">Continue</button>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

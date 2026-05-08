@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body-subscription">
+
+<div class="sub-container">
+    <div class="subscription-head">
+        <h1>Clinic Subscription</h1>
+    </div><br><br>
+
+    <div class="plans">
+
+        <div class="plan active" onclick="selectPlan(this,1,2)">
+            <h2>Select 6 MONTHS Plan</h2>
+            <p>[2 Doctors]</p>
+            <h1>₹ 1</h1>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this,2,4)">
+            <h2>Select 1 YEAR Plan</h2>
+            <p>[4 Doctors]</p>
+            <h1>₹ 2</h1>
+        </div>
+
+    </div>
+
+    <div class="extra-section">
+        <div class="extra-doctor">
+        <button class="extra-btn" onclick="addDoctor()">
+            + Add Extra Doctors 
+        </button><span> ₹ 0.5</span>
+        </div>
+
+        <p id="extraCount">Extra Doctors: 0</p>
+    </div>
+
+    <h2 id="total">Total: ₹ 1</h2>
+
+    <button class="pay-btn" onclick="goPayment()">
+        Proceed to pay
+    </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
