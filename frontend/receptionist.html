@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist - ClinikX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="Body-superadmin">
+
+    <header class="superadmin-header">
+        <h1>ClinikX</h1>
+        <button class="logout" onclick="window.location.href='home.html'">
+            <span class="arrow">
+                <img src="images/arrow.png" alt="arrow">
+                <h2>Logout</h2>
+            </span>
+        </button>
+    </header>
+    <b class="b"></b>
+
+    <div class="superadmin-body">
+        <!-- Sidebar Buttons - DO NOT CHANGE THESE IDs -->
+        <div class="left-body" style="align-items: center; text-align: center;">
+            <button class="All-Requests active" id="todayAptBtn"
+                style="height: 120px; width: 100%; margin-bottom: 20px;">
+                <h2 style="font-size: 18px; line-height: 1.5;">Today<br>Appointments</h2>
+            </button>
+
+            <b class="b" style="width: 80%; margin: 10px 0;"></b>
+
+            <button class="existing-clinic" id="addPatientTabBtn" style="height: 120px; width: 100%; margin-top: 20px;">
+                <h2 style="font-size: 18px; line-height: 1.5;">Add Patients</h2>
+            </button>
+        </div>
+
+        <div class="right-body" style="padding: 30px;">
+
+            <!-- SECTION 1: TODAY APPOINTMENTS -->
+            <div id="todayAptSection">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="color: rgb(93, 8, 173);">Welcome Sandhya!!</h2>
+                </div>
+
+                <div class="righttop" style="justify-content: space-between; padding: 0 0 30px 0;">
+                    <div class="search-section">
+                        <img src="images/searchtool.png" alt="searchtool">
+                        <input type="text" id="receptionSearch" placeholder="Search by Token Id Or Name"
+                            style="width: 400px; padding: 15px 15px 15px 50px; border: 2px solid rgb(174, 106, 237); border-radius: 12px; font-size: 16px; outline: none;">
+                    </div>
+
+                    <select
+                        style="width: 250px; padding: 15px; border-radius: 25px; border: 2px solid rgb(174, 106, 237); outline: none; font-size: 16px; color: gray;">
+                        <option>Select Doctor</option>
+                        <option>Dr. Ruchitha - Dermatologist</option>
+                    </select>
+                </div>
+
+                <div class="table-box" style="width: 100%; padding: 0;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Token Id</th>
+                                <th>Doctor Name</th>
+                                <th>Status</th>
+                                <th>Cancel Appointment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="receptionTableBody" class="tablebody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION 2: ADD PATIENT TAB (DESIGN UNCHANGED) -->
+            <div id="addPatientSection" style="display: none;">
+                <h2 style="color: rgb(93, 8, 173); margin-bottom: 30px;">Welcome Sandhya!!</h2>
+
+                <div style="display: flex; gap: 40px;">
+                    <!-- Phone Lookup -->
+                    <div style="flex: 1.5;">
+                        <input type="text" id="aptPhone" placeholder="Enter Phone number"
+                            style="padding: 15px; border: 2px solid #ccc; border-radius: 8px; width: 250px; margin-bottom: 30px; font-size: 16px;">
+
+                        <h3 style="text-align: center; color: #444; margin-bottom: 10px;">Existing Patients</h3>
+                        <div class="table-box" style="width: 100%; padding: 0;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Age</th>
+                                        <th>Doctor Name</th>
+                                        <th style="text-align: center;">Select</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Manu</td>
+                                        <td>1</td>
+                                        <td>Ruchitha-Dermatologist</td>
+                                        <td style="text-align: center;"><input type="checkbox"
+                                                style="width: 20px; height: 20px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>sandhya</td>
+                                        <td>2</td>
+                                        <td>Ruchitha-Dermatologist</td>
+                                        <td style="text-align: center;"><input type="checkbox"
+                                                style="width: 20px; height: 20px;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div
+                            style="margin-top: 30px; padding: 20px; border: 2px solid #a4de9c; border-radius: 10px; color: #444; font-size: 14px; text-align: center;">
+                            If Phone Number Is Already Registered And also to add New Patient with same phone number
+                        </div>
+                    </div>
+
+                    <!-- Purple Registration Form -->
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                        <p style="text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px;">If Phone
+                            Number is Not Registered</p>
+
+                        <div
+                            style="background: linear-gradient(to bottom, #e4d4f4, #c89bf1); padding: 30px; border-radius: 25px; width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                            <h3 style="color: #4373c6; margin-bottom: 10px;">Registration Form</h3>
+
+                            <form id="addAppointmentForm"
+                                style="display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center;">
+                                <input type="text" id="aptName" placeholder="Name" required
+                                    style="width: 80%; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
+                                <input type="number" id="aptAge" placeholder="Age" required
+                                    style="width: 80%; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
+                                <input type="text" id="aptGender" placeholder="Gender" required
+                                    style="width: 80%; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
+
+                                <select id="aptDoctor" required
+                                    style="width: 86%; padding: 12px; border: none; border-radius: 8px; outline: none; color: gray; font-size: 16px;">
+                                    <option value="">Select Doctor</option>
+                                    <option value="Dr. Ruchitha - Dermatologist">Dr. Ruchitha - Dermatologist</option>
+                                    <option value="Dr. Vinayak - General">Dr. Vinayak - General</option>
+                                </select>
+
+                                <button type="submit"
+                                    style="width: 86%; background: white; color: rgb(93, 8, 173); font-size: 18px; font-weight: bold; border-radius: 10px; padding: 15px; margin-top: 10px; cursor: pointer; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
