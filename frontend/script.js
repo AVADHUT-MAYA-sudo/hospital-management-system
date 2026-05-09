@@ -102,7 +102,7 @@ async function verifyOTP(){
         }
         else if(data.role === "clinicX"){
             window.location.href =
-                "clinicX.html";
+                "clinicX_doctor.html";
         }
         else{
         window.location.href =
