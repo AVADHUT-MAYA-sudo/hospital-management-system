@@ -104,9 +104,9 @@ async function verifyOTP(){
             window.location.href =
                 "clinicX.html";
         }
-        else{}
+        else{
         window.location.href =
-                "doctor.html";
+                "doctor.html";}
     }
     else{
         alert("Invalid OTP");
@@ -515,6 +515,46 @@ async function payByCard(e){
     await paymentSuccess();
 }
 
+//debit card payment
+async function payByDebit(e){
+    e.stopPropagation();
+
+    const cardNumber =
+        document.getElementById("debitNumber")
+        .value.replace(/\s/g,"");
+
+    const expiry =
+        document.getElementById("debitExpiry").value;
+
+    const cvv =
+        document.getElementById("debitCvv").value;
+
+    const bank =
+        document.getElementById("bankName").value;
+
+    if(cardNumber.length < 16 || !luhnCheck(cardNumber)){
+        alert("Invalid debit card number");
+        return;
+    }
+
+    if(!validateExpiry(expiry)){
+        alert("Invalid expiry");
+        return;
+    }
+
+    if(cvv.length !== 3){
+        alert("Invalid CVV");
+        return;
+    }
+
+    if(bank === ""){
+        alert("Select bank");
+        return;
+    }
+
+    await paymentSuccess();
+}
+
 function isMobile(){
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
@@ -525,23 +565,33 @@ function selectPayment(el, mode){
 
     el.classList.add("active");
 
-    const cardSection = document.getElementById("cardSection");
-    const qrSection = document.getElementById("qrSection");
+    const cardSection =
+        document.getElementById("cardSection");
+
+    const debitSection =
+        document.getElementById("debitSection");
+
+    const qrSection =
+        document.getElementById("qrSection");
+
+    if(cardSection) cardSection.style.display = "none";
+    if(debitSection) debitSection.style.display = "none";
+    if(qrSection) qrSection.style.display = "none";
 
     if(mode === "CARD"){
-        if(cardSection) cardSection.style.display = "block";
-        if(qrSection) qrSection.style.display = "none";
+        cardSection.style.display = "block";
     }
-    else if(mode === "UPI"){
-        if(cardSection) cardSection.style.display = "none";
 
+    else if(mode === "DEBIT"){
+        debitSection.style.display = "block";
+    }
+
+    else if(mode === "UPI"){
         if(isMobile()){
             openUPI();
         }else{
-            if(qrSection){
-                qrSection.style.display = "block";
-                generateQR();
-            }
+            qrSection.style.display = "block";
+            generateQR();
         }
     }
 }

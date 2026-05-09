@@ -32,8 +32,26 @@
         </div>
 
         <!-- OPTION 2 -->
-        <div class="pay-box" onclick="selectPayment(this)">
+        <div class="pay-box" onclick="selectPayment(this,'DEBIT')">
             <h3>Debit Card / Internet Banking</h3>
+
+            <div id="debitSection" style="display:none;">
+                <input type="text" id="debitNumber" placeholder="Enter debit card number">
+                <input type="text" id="debitExpiry" placeholder="MM/YY">
+                <input type="password" id="debitCvv" placeholder="CVV">
+                <select id="bankName">
+                    <option value="">Select Bank</option>
+                    <option>SBI</option>
+                    <option>HDFC</option>
+                    <option>ICICI</option>
+                    <option>Axis Bank</option>
+                    <option>Kotak Bank</option>
+                </select>
+
+                <button onclick="payByDebit(event)">
+                    Pay with Debit Card
+                </button>
+            </div>
         </div>
 
         <!-- OPTION 3 -->
