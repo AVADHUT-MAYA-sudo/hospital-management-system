@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="Body-superadmin">
+
+    <header class="superadmin-header">
+        <h1>Clinic Admin</h1>
+        <button class="logout" onclick="window.location.href='home.html'">
+            <span class="arrow">
+                <img src="images/arrow.png" alt="arrow">
+                <h2>Logout</h2>
+            </span>
+        </button>
+    </header>
+    <b class="b"></b>
+
+    <div class="superadmin-body">
+        <!-- Sidebar -->
+        <div class="left-body">
+            <button class="All-Requests active" id="manageStaffBtn">
+                <h1>Manage Staffs</h1>
+            </button>
+            <button class="existing-clinic" id="manageBranchBtn">
+                <h1>Manage Branches</h1>
+            </button>
+            <button class="existing-clinic" id="settingsBtn">
+                <h1>Settings</h1>
+            </button>
+            <br>
+            <b class="b"></b>
+        </div>
+
+        <div class="right-body">
+            <!-- STAFF SECTION -->
+            <div id="staffSection">
+                <div class="righttop">
+                    <div class="search-section">
+                        <img src="images/searchtool.png" alt="searchtool">
+                        <input type="text" id="staffSearchBox" placeholder="Search by name, Designation">
+                    </div>
+                    <button class="pay-btn" style="min-width: 150px; padding: 10px;"
+                        onclick="openModal('addStaffModal')">+ Add Staff</button>
+                </div>
+
+                <div class="table-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>View info</th>
+                                <th>Assign branch</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staffTableBody" class="tablebody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- BRANCH SECTION -->
+            <div id="branchSection" style="display: none;">
+                <div class="righttop">
+                    <div class="search-section">
+                        <img src="images/searchtool.png" alt="searchtool">
+                        <input type="text" id="branchSearchBox" placeholder="Search by branch">
+                    </div>
+                    <button class="pay-btn" style="min-width: 150px; padding: 10px;"
+                        onclick="openModal('addBranchModal')">+ Add Branches</button>
+                </div>
+
+                <div class="table-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Clinic Name</th>
+                                <th>Branch</th>
+                                <th>Timings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="branchTableBody" class="tablebody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SETTINGS SECTION -->
+            <div id="settingsSection" style="display: none; padding: 40px; text-align: center;">
+                <img src="images/person.png" alt="Profile" style="width: 100px; margin-bottom: 20px;">
+                <div class="iconinside" style="margin-bottom: 20px; display: block;">
+                    <input type="text" id="settingClinicName" value="Indira clinic"
+                        style="text-align: center; font-size: 18px; margin: 0 auto; display: block;">
+                </div>
+                <div class="iconinside" style="margin-bottom: 30px; display: block;">
+                    <input type="text" id="settingPhone" value="9876543234"
+                        style="text-align: center; font-size: 18px; margin: 0 auto; display: block;">
+                </div>
+                <button class="pay-btn" onclick="window.location.href='subscription.html'">Upgrade Subscription</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Add Staff Modal -->
+    <div id="addStaffModal" class="modal">
+        <div class="modal-content large-modal" style="width: 600px;">
+            <span class="close" onclick="closeSpecificModal('addStaffModal')">×</span>
+            <h2 class="subHeading">Add Staff</h2>
+            <form id="addStaffForm" class="patientForm"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <input type="text" id="staffName" placeholder="Enter Name" required>
+                <input type="text" id="staffDesignation" placeholder="Enter Designation" required>
+                <input type="text" id="staffSpec" placeholder="Enter Specialization" required>
+                <input type="text" id="staffPhone" placeholder="Enter Phone Number" required>
+                <input type="text" id="staffQual" placeholder="Enter Qualification" required>
+                <input type="file" id="staffCert" style="padding-top: 10px;">
+                <button type="submit" class="pay-btn" style="grid-column: span 2; margin-top: 20px;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Branch Modal -->
+    <div id="addBranchModal" class="modal">
+        <div class="modal-content large-modal" style="width: 500px;">
+            <span class="close" onclick="closeSpecificModal('addBranchModal')">×</span>
+            <h2 class="subHeading">Add Branch</h2>
+            <form id="addBranchForm" class="patientForm" style="align-items: center;">
+                <input type="text" id="branchClinic" placeholder="Enter Clinic Name" required>
+                <input type="text" id="branchName" placeholder="Enter Branch" required>
+                <input type="text" id="branchTimings" placeholder="Enter Timings" required>
+                <button type="submit" class="pay-btn" style="margin-top: 20px; width: 300px;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Staff Info Modal -->
+    <div id="viewStaffModal" class="modal">
+        <div class="modal-content large-modal" style="width: 400px; text-align: left;">
+            <span class="close" onclick="closeSpecificModal('viewStaffModal')">×</span>
+            <h2 class="subHeading">Staff Details</h2>
+            <div id="staffDetailsContent" style="font-size: 18px; line-height: 1.8;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
