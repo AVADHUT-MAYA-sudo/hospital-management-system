@@ -24,6 +24,7 @@ const role =
 
 /* send otp */
 async function sendOTP(){
+<<<<<<< HEAD
     try{
         const phone =
             document.getElementById("mobile").value;
@@ -72,6 +73,37 @@ async function sendOTP(){
         console.log(err);
         alert("Server error");
     }
+=======
+    const phone =
+        document.getElementById("mobile").value;
+
+    if(phone.length !== 10){
+        alert("Enter valid mobile number");
+        return;
+    }
+
+    await fetch(
+        "http://localhost:5000/api/auth/send-otp",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                phone,
+                role
+            })
+        }
+    );
+
+    alert("OTP sent");
+
+    /* show otp box */
+    document.getElementById("otpBox").style.display = "flex";
+
+    /* focus first box */
+    document.getElementById("otp1").focus();
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 }
 /* auto focus next box */
 document.querySelectorAll(".otp-box input")
@@ -85,6 +117,7 @@ document.querySelectorAll(".otp-box input")
 
 /* verify */
 async function verifyOTP(){
+<<<<<<< HEAD
     try{
         const phone =
         document.getElementById(
@@ -136,6 +169,52 @@ async function verifyOTP(){
     catch(err){
         console.log(err);
         alert("Server error");
+=======
+    const phone =
+        document.getElementById("mobile").value;
+
+    const otp =
+        document.getElementById("otp1").value +
+        document.getElementById("otp2").value +
+        document.getElementById("otp3").value +
+        document.getElementById("otp4").value;
+
+    const res = await fetch(
+        "http://localhost:5000/api/auth/verify-otp",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                phone,
+                otp
+            })
+        }
+    );
+
+    const data = await res.json();
+
+    if(data.success){
+        if(data.role === "superadmin"){
+            window.location.href =
+                "superadmin.html";
+        }
+        else if(data.role === "clinicadmin"){
+            window.location.href =
+                "clinicadmin.html";
+        }
+        else if(data.role === "clinicX"){
+            window.location.href =
+                "clinicX_doctor.html";
+        }
+        else{
+        window.location.href =
+                "doctor.html";}
+    }
+    else{
+        alert("Invalid OTP");
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
     }
 }
 /* =========================
@@ -541,6 +620,49 @@ async function payByCard(e){
     await paymentSuccess();
 }
 
+<<<<<<< HEAD
+=======
+//debit card payment
+async function payByDebit(e){
+    e.stopPropagation();
+
+    const cardNumber =
+        document.getElementById("debitNumber")
+        .value.replace(/\s/g,"");
+
+    const expiry =
+        document.getElementById("debitExpiry").value;
+
+    const cvv =
+        document.getElementById("debitCvv").value;
+
+    const bank =
+        document.getElementById("bankName").value;
+
+    if(cardNumber.length < 16 || !luhnCheck(cardNumber)){
+        alert("Invalid debit card number");
+        return;
+    }
+
+    if(!validateExpiry(expiry)){
+        alert("Invalid expiry");
+        return;
+    }
+
+    if(cvv.length !== 3){
+        alert("Invalid CVV");
+        return;
+    }
+
+    if(bank === ""){
+        alert("Select bank");
+        return;
+    }
+
+    await paymentSuccess();
+}
+
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 function isMobile(){
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
@@ -551,6 +673,7 @@ function selectPayment(el, mode){
 
     el.classList.add("active");
 
+<<<<<<< HEAD
     const cardSection = document.getElementById("cardSection");
     const qrSection = document.getElementById("qrSection");
 
@@ -568,6 +691,35 @@ function selectPayment(el, mode){
                 qrSection.style.display = "block";
                 generateQR();
             }
+=======
+    const cardSection =
+        document.getElementById("cardSection");
+
+    const debitSection =
+        document.getElementById("debitSection");
+
+    const qrSection =
+        document.getElementById("qrSection");
+
+    if(cardSection) cardSection.style.display = "none";
+    if(debitSection) debitSection.style.display = "none";
+    if(qrSection) qrSection.style.display = "none";
+
+    if(mode === "CARD"){
+        cardSection.style.display = "block";
+    }
+
+    else if(mode === "DEBIT"){
+        debitSection.style.display = "block";
+    }
+
+    else if(mode === "UPI"){
+        if(isMobile()){
+            openUPI();
+        }else{
+            qrSection.style.display = "block";
+            generateQR();
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
         }
     }
 }
@@ -683,6 +835,7 @@ if(logoutBtn){
         localStorage.clear();
         window.location.href = "home.html";
     });
+<<<<<<< HEAD
 }
 
 //clinicadmin.js
@@ -859,3 +1012,6 @@ console.log(err);
 }
 loadStaff();
 loadBranches();
+=======
+}
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a

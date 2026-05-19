@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,4 +72,79 @@
     <script src="script.js"></script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor - ClinikX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="Body-superadmin">
+
+    <header class="superadmin-header">
+        <h1>ClinikX</h1>
+        <button class="logout" onclick="window.location.href='home.html'">
+            <span class="arrow">
+                <img src="images/arrow.png" alt="arrow">
+                <h2>Logout</h2>
+            </span>
+        </button>
+    </header>
+    <b class="b"></b>
+
+    <div class="superadmin-body">
+        <div class="left-body" style="align-items: center;">
+            <button class="All-Requests active" style="height: 120px; width: 100%; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; line-height: 1.5;">Today<br>Appointment</h2>
+            </button>
+
+            <b class="b" style="width: 80%; margin: 10px 0;"></b>
+
+            <h3 style="cursor: pointer; color: gray; margin-top: 20px;">Settings</h3>
+        </div>
+
+        <div class="right-body" style="padding: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="color: rgb(93, 8, 173);">Welcome Dr. Ruchitha!!</h2>
+            </div>
+
+            <div class="table-box" style="width: 100%; padding: 0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Token No.</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                            <th>Prescription</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorTableBody" class="tablebody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="prescriptionModal" class="modal">
+        <div class="modal-content large-modal" style="width: 500px;">
+            <span class="close" onclick="closeSpecificModal('prescriptionModal')">×</span>
+            <h2 class="subHeading">Write Prescription</h2>
+            <form id="prescriptionForm" class="patientForm" style="align-items: center;">
+                <input type="hidden" id="prescApptId">
+                <textarea id="prescNotes" placeholder="Write prescription notes here..." required
+                    style="width: 300px; height: 150px; padding: 15px; border-radius: 8px; border: 2px solid #ccc; font-family: Arial; resize: none;"></textarea>
+                <input type="text" id="prescVisit" placeholder="Patient needs to visit after X days">
+                <button type="submit" class="pay-btn" style="width: 334px; margin-top: 15px;">Save Prescription</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 </html>

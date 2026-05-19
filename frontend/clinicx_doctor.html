@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,4 +79,86 @@
     <script src="script.js"></script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClinicX - Doctor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="Body-superadmin">
+
+    <header class="superadmin-header" style="justify-content: space-between; padding: 0 40px;">
+        <h3 style="color: rgb(93, 8, 173);">Welcome Dr. Ruchitha!!</h3>
+        <h1 style="position: absolute; left: 50%; transform: translateX(-50%);">ClinicX</h1>
+        <button class="logout" onclick="window.location.href='home.html'" style="position: static;">
+            <span class="arrow">
+                <img src="images/arrow.png" alt="arrow">
+                <h2>Logout</h2>
+            </span>
+        </button>
+    </header>
+    <b class="b"></b>
+
+    <div class="superadmin-body">
+        <div class="left-body" style="align-items: center;">
+            <button class="All-Requests active" style="height: 120px; width: 100%; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; line-height: 1.5;">Today<br>Appointment</h2>
+            </button>
+
+            <b class="b" style="width: 80%; margin: 10px 0;"></b>
+
+            <h3 style="cursor: pointer; color: gray; margin-top: 20px;">Settings</h3>
+        </div>
+
+        <div class="right-body" style="padding: 30px;">
+
+            <div class="table-box" style="width: 100%; padding: 0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>Token number</th>
+                            <th>Status</th>
+                            <th>update</th>
+                            <th>prescription</th>
+                            <th>notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorTableBody" class="tablebody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS SECTION -->
+    <div id="docSettingsSection" style="display: none; padding: 40px; text-align: center;">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
+            <img src="images/person.png" alt="Profile" style="width: 150px;">
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" value="Ruchitha"
+                    style="text-align: center; border: 1px solid #ccc; padding: 10px; width: 250px;">
+                <input type="text" value="Dermatologist"
+                    style="text-align: center; border: 1px solid #ccc; padding: 10px; width: 250px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <input type="text" value="9876543456"
+                        style="text-align: center; border: 1px solid #ccc; padding: 10px; width: 250px;">
+                    <span style="cursor: pointer;">✏️</span>
+                </div>
+                <button class="pay-btn" style="padding: 10px; font-size: 16px; margin-top: 10px;">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 </html>

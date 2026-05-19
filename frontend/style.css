@@ -829,7 +829,33 @@ li {
 }
     /*debitcard*/
 
+<<<<<<< HEAD
 
+=======
+#debitSection{
+    margin-top:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+#debitSection input,
+#debitSection select{
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    width:250px;
+}
+
+#debitSection button{
+    padding:12px;
+    border:none;
+    border-radius:20px;
+    background:#7b3fa1;
+    color:white;
+    cursor:pointer;
+}
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 
     /*UPI*/
 #upiSection{

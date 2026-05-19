@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const Patient = require("../models/patient");
+=======
+const Patient = require("../models/Patient");
+>>>>>>> b5b309a4f744f8f2d3d6f6ea48338d714621a05a
 // conforming paymentgateway
 const Razorpay = require("razorpay");
 const razorpay = new Razorpay({
