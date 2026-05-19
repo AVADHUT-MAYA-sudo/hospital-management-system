@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist - ClinicX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="Body-superadmin">
+
+<header class="superadmin-header">
+    <h1>ClinicX</h1>
+    <button class="logout" onclick="window.location.href='home.html'">
+        <span class="arrow">
+            <img src="images/arrow.png" alt="arrow">
+            <h2>Logout</h2>
+        </span>
+    </button>
+</header>
+<b class="b"></b>
+
+<div class="superadmin-body" style="padding: 20px; display: block;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="color: rgb(93, 8, 173); font-size: 28px;">Welcome Sandhya!!</h2>
+        <button class="pay-btn" style="min-width: 150px; padding: 12px 20px; font-size: 16px;" onclick="openModal('addPatientModal')">+ Add Patient</button>
+    </div>
+
+    <div class="righttop" style="justify-content: space-between; padding: 0 0 30px 0;">
+        <div class="search-section">
+            <img src="images/searchtool.png" alt="searchtool">
+            <input type="text" id="receptionSearch" placeholder="Search by Token Id Or Name" style="width: 400px; padding: 15px 15px 15px 50px; border: 2px solid rgb(174, 106, 237); border-radius: 12px; font-size: 16px; outline: none;">
+        </div>
+        
+        <select style="width: 250px; padding: 15px; border-radius: 25px; border: 2px solid rgb(174, 106, 237); outline: none; font-size: 16px; color: gray;">
+            <option>Select Doctor</option>
+            <option>Dr. Ruchitha - Dermatologist</option>
+            <option>Dr. Vinayak - General</option>
+        </select>
+    </div>
+
+    <h2>Today's Appointments</h2>
+    <div class="table-box" style="width: 100%; margin-top: 15px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Token Id</th>
+                    <th>Name</th>
+                    <th>Doctor Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="receptionTableBody" class="tablebody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="addPatientModal" class="modal">
+    <div class="modal-content large-modal" style="width: 500px; background: linear-gradient(to bottom, #f3e8ff, #ffffff);">
+        <span class="close" onclick="closeSpecificModal('addPatientModal')">×</span>
+        <h2 class="subHeading" style="color: rgb(93, 8, 173); text-align: center; margin-bottom: 20px;">Add Patient to Queue</h2>
+        
+        <form id="addAppointmentForm" class="patientForm" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <input type="text" id="aptPhone" placeholder="Enter Phone number" required style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+            <input type="text" id="aptName" placeholder="Enter Name" required style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+            <input type="number" id="aptAge" placeholder="Age" required style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+            <input type="text" id="aptGender" placeholder="Gender" required style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+            
+            <select id="aptDoctor" required style="width: 85%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; color: gray;">
+                <option value="">Select Doctor</option>
+                <option value="Dr. Ruchitha - Dermatologist">Dr. Ruchitha - Dermatologist</option>
+                <option value="Dr. Vinayak - General">Dr. Vinayak - General</option>
+            </select>
+            
+            <button type="submit" class="pay-btn" style="width: 85%; margin-top: 15px; padding: 15px; font-size: 18px;">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

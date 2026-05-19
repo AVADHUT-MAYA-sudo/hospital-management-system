@@ -1,0 +1,34 @@
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const app = express();
+
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Routes
+const patientRoutes = require("./routes/patientRoutes");
+app.use("/api/patients", patientRoutes);
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
+
+// Server
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
+});
+
+// Auth Routes
+const authRoutes =require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+const staffRoutes=require("./routes/staffRoutes");
+const branchRoutes=require("./routes/branchRoutes");
+app.use("/api/staff",staffRoutes);
+app.use("/api/branch",branchRoutes);

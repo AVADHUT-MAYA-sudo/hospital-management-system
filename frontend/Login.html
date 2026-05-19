@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h2>Login page</h2>
+
+    <!-- MOBILE INPUT -->
+    <div class="input-box">
+        <input type="text" id="mobile" placeholder="Enter your mobile number">
+    </div>
+
+    <!-- GET OTP -->
+    <button class="otp-btn" onclick="sendOTP()">Get OTP</button>
+
+    <!-- OTP BOX -->
+    <div class="otp-box" id="otpBox" style="display:none;">
+        <input type="text" id="otp1" maxlength="1">
+        <input type="text" id="otp2" maxlength="1">
+        <input type="text" id="otp3" maxlength="1">
+        <input type="text" id="otp4" maxlength="1">
+    </div>
+
+    <!-- SUBMIT -->
+    <button class="submit-btn" onclick="verifyOTP()">Submit</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
